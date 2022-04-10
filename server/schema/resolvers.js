@@ -18,7 +18,7 @@ const resolvers = {
         .populate('friends')
         .populate('thoughts');
     },
-    
+
     // get a user by username
     user: async (parent, { username }) => {
         return User.findOne({ username })
@@ -26,7 +26,18 @@ const resolvers = {
         .populate('friends')
         .populate('thoughts');
     },
+
+    Mutation: {
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
+            return user;
+        },
+    
+        //login: async () => {
+            
+        //}
     }
+}
 };
 
 module.exports = resolvers
